@@ -46,7 +46,7 @@ Llaman a *sp_triggers* que actualizará la tabla *facturacion*, todos apuntando 
 
 ## Funciones
 
-* *[f_aleatorio(min, max)](sql_codigos.md#f_aleatorio)  : retorna un valor tipo *INT*.
+* *[f_aleatorio(min, max)](sql_codigos.md#f_aleatorio)*  : retorna un valor tipo *INT*.
 * *[f_cliente_dni_aleatorio()](sql_codigos.md#f_cliente_dni_aleatorio)*  : retorna un número de *DNI* de la tabla de clientes.
 * *[f_producto_aleatorio()](sql_codigos.md#f_producto_aleatorio)*  : retorna el código de un producto aleatorio.
 * *[f_vendedor_aleatorio()](sql_codigos.md#f_vendedor_aleatorio)*  : retorna la matrícula de un vendedor aleatorio.
