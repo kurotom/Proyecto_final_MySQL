@@ -6,6 +6,8 @@ Uso de *Triggers* y *Stored Procedures* para la manipulación avanzada de los da
 
 Se simula las compras mediante el uso de *Stored Procedures* y registrando la transacción en las tablas respectivas.
 
+El fichero **empresa_dump.sql** es el respaldo de la base de datos *empresa*, las tablas, triggers, stored procedures, funciones.
+
 ## Entidades
 
 * *tb_vendedor*  :  tabla que contiene los datos de los vendedores.
