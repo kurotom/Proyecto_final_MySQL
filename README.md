@@ -6,11 +6,11 @@ Uso de *Triggers* y *Stored Procedures* para la manipulación avanzada de los da
 
 Se simula las compras mediante el uso de *Stored Procedures* y registrando la transacción en las tablas respectivas.
 
-El fichero **empresa_dump.sql** es el respaldo de la base de datos *empresa*, las tablas, triggers, stored procedures, funciones.
+El fichero **[empresa_dump.sql](empresa_dump.sql)** es el respaldo de la base de datos *empresa*, las tablas, triggers, stored procedures, funciones.
 
 ## Entidades
 
-* *[tb_vendedor](sql_codigos.md)*  :  tabla que contiene los datos de los vendedores.
+* *tb_vendedor*  :  tabla que contiene los datos de los vendedores.
 * *tb_cliente*  :  tabla que contiene los datos de los clientes.
 * *tb_productos*  : tabla que contiene los datos de los productos.
 * *tb_items_vendidos*  :  tabla que contiene los datos de los items vendidos, teniendo dos claves foráneas apuntando hacia *tb_vendedor* y *tb_venta*.
@@ -27,26 +27,26 @@ Se llama el *Stored Procedure* `sp_venta` para simular una compra, al ingresar l
 
 ## Stored Procedures
 
-* `sp_venta`  :  simula una compra, tiene los siguientes parámetros:
+* [sp_venta](sql_codigos.md#sp_venta)  :  simula una compra, tiene los siguientes parámetros:
     * Fecha.
     * Número máximo de items.
     * Numero máximo de cantidad.
 
-* `sp_triggers`  :  actualiza la tabla `facturacion`.
+* [sp_triggers](sql_codigos.md#sp_triggers)  :  actualiza la tabla `facturacion`.
 
 
 ## Triggers
 
 Llaman a *sp_triggers* que actualizará la tabla *facturacion*, todos apuntando a la tabla `tb_venta`.
 
-* `TG_INSERT_VENTA`
-* `TG_UPDATE_VENTA`
-* `TG_DELETE_VENTA`
+* [TG_INSERT_VENTA](sql_codigos.md#TG_INSERT_VENTA)
+* [TG_UPDATE_VENTA](sql_codigos.md#TG_UPDATE_VENTA)
+* [TG_DELETE_VENTA](sql_codigos.md#TG_DELETE_VENTA)
 
 
 ## Funciones
 
-* `f_aleatorio(min, max)`  : retorna un valor tipo *INT*.
-* `f_cliente_dni_aleatorio()`  : retorna un número de *DNI* de la tabla de clientes.
-* `f_producto_aleatorio()`  : retorna el código de un producto aleatorio.
-* `f_vendedor_aleatorio()`  : retorna la matrícula de un vendedor aleatorio.
+* *[f_aleatorio(min, max)](sql_codigos.md#f_aleatorio)  : retorna un valor tipo *INT*.
+* *[f_cliente_dni_aleatorio()](sql_codigos.md#f_cliente_dni_aleatorio)*  : retorna un número de *DNI* de la tabla de clientes.
+* *[f_producto_aleatorio()](sql_codigos.md#f_producto_aleatorio)*  : retorna el código de un producto aleatorio.
+* *[f_vendedor_aleatorio()](sql_codigos.md#f_vendedor_aleatorio)*  : retorna la matrícula de un vendedor aleatorio.

@@ -12,11 +12,11 @@ CREATE FUNCTION f_aleatorio (
 RETURNS INT DETERMINISTIC
 BEGIN
 	DECLARE resultado INT DEFAULT 0;
-	
+
 	SET resultado = FLOOR(RAND() * (max  - (min + 1)) + min);
-	
+
 	RETURN resultado;
-	
+
 END$$
 
 DELIMITER ;
@@ -24,6 +24,7 @@ DELIMITER ;
 
 ----
 
+<a name="f_cliente_dni_aleatorio"></a>
 
 * *f_cliente_dni_aleatorio*
 
@@ -36,15 +37,15 @@ BEGIN
 	DECLARE resultado VARCHAR(11);
 	DECLARE maxCLIENTE INT DEFAULT 0;
 	DECLARE aleatorio INT DEFAULT 0;
-	
+
 	SELECT COUNT(*) INTO maxCLIENTE FROM tb_cliente;
-	
+
 	SELECT f_aleatorio(1, maxCLIENTE) INTO aleatorio;
-	
+
 	SELECT DNI FROM tb_cliente LIMIT aleatorio,1 INTO resultado;
-	
+
 	RETURN resultado;
-	
+
 END $$
 
 DELIMITER ;
@@ -52,6 +53,7 @@ DELIMITER ;
 
 ---
 
+<a name="f_producto_aleatorio"></a>
 
 * *f_producto_aleatorio*
 
@@ -81,6 +83,7 @@ DELIMITER ;
 
 ---
 
+<a name="f_vendedor_aleatorio"></a>
 
 * *f_vendedor_aleatorio*
 
@@ -110,6 +113,7 @@ DELIMITER ;
 
 ---
 
+<a name="sp_venta"></a>
 
 * *sp_venta*
 
@@ -129,32 +133,32 @@ BEGIN
 
    DECLARE dniCLIENTE VARCHAR(11);
    DECLARE matriculaVENDEDOR VARCHAR(5);
-   
+
    DECLARE fechaNOW DATE DEFAULT CURRENT_DATE();   
    DECLARE impuestoCOMPRA FLOAT DEFAULT 0;
    DECLARE numeroVENTA INT DEFAULT 0;
-   
+
    DECLARE cantidadPRODUCTO INT DEFAULT 0;
    DECLARE codigoPRODUCTO VARCHAR(10);
    DECLARE precioPRODUCTO FLOAT DEFAULT 0;
-   
+
    WHILE contadorWHILE < maxItems DO
-   
+
     SET cantidadPRODUCTO = f_aleatorio(1, maxCantidad);
     SET codigoPRODUCTO = f_producto_aleatorio();
     SELECT PRECIO_LISTA INTO precioPRODUCTO FROM tb_productos WHERE CODIGO = codigoPRODUCTO;
-   
+
     SELECT COUNT(*) FROM tb_venta INTO numeroVENTA;
-      
+
     IF numeroVENTA = 0 THEN SET numeroVENTA = 1;
         ELSE SET numeroVENTA = numeroVENTA + 1;
     END IF;
-   
+
     SET dniCLIENTE = f_cliente_dni_aleatorio();
     SET matriculaVENDEDOR = f_vendedor_aleatorio();
-   
+
     SET impuestoCOMPRA = f_aleatorio(1, 10) * 0.1;
-      
+
     INSERT INTO tb_venta (DNI, MATRICULA, FECHA, NUMERO, IMPUESTO) VALUES (
         dniCLIENTE,
         matriculaVENDEDOR,
@@ -162,7 +166,7 @@ BEGIN
         numeroVENTA,
         impuestoCOMPRA
     );
-  
+
     INSERT INTO tb_items_vendidos (
         NUMERO, CODIGO, CANTIDAD, PRECIO
     ) VALUES (
@@ -173,10 +177,10 @@ BEGIN
     );
 
     SET contadorWHILE = contadorWHILE + 1;
-   
+
    END WHILE;
 
-   
+
     SET mensaje = 'Compra generada en "tb_venta"';
     SELECT mensaje;
 
@@ -186,6 +190,8 @@ DELIMITER ;
 ```
 
 ----
+
+<a name="sp_triggers"></a>
 
 * *sp_triggers*
 
@@ -214,6 +220,7 @@ DELIMITER ;
 
 ----
 
+<a name="TG_INSERT_VENTA"></a>
 
 * *TG_INSERT_VENTA*
 
@@ -230,6 +237,7 @@ END $$
 DELIMITER ;
 ```
 
+<a name="TG_DELETE_VENTA"></a>
 
 * *TG_DELETE_VENTA*
 
@@ -246,6 +254,7 @@ END $$
 DELIMITER ;
 ```
 
+<a name="TG_UPDATE_VENTA"></a>
 
 * *TG_UPDATE_VENTA*
 
@@ -261,4 +270,3 @@ END $$
 
 DELIMITER ;
 ```
-
