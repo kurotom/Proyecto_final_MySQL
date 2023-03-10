@@ -10,7 +10,7 @@ El fichero **empresa_dump.sql** es el respaldo de la base de datos *empresa*, la
 
 ## Entidades
 
-* *tb_vendedor*  :  tabla que contiene los datos de los vendedores.
+* *[tb_vendedor](sql_codigos.md)*  :  tabla que contiene los datos de los vendedores.
 * *tb_cliente*  :  tabla que contiene los datos de los clientes.
 * *tb_productos*  : tabla que contiene los datos de los productos.
 * *tb_items_vendidos*  :  tabla que contiene los datos de los items vendidos, teniendo dos claves foráneas apuntando hacia *tb_vendedor* y *tb_venta*.
@@ -50,8 +50,3 @@ Llaman a *sp_triggers* que actualizará la tabla *facturacion*, todos apuntando 
 * `f_cliente_dni_aleatorio()`  : retorna un número de *DNI* de la tabla de clientes.
 * `f_producto_aleatorio()`  : retorna el código de un producto aleatorio.
 * `f_vendedor_aleatorio()`  : retorna la matrícula de un vendedor aleatorio.
-
-
-
-
-

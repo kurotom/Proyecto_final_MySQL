@@ -1,3 +1,5 @@
+<a name="f_aleatorio"></a>
+
 * *f_aleatorio*
 
 ```sql
