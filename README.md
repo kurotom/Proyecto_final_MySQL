@@ -14,6 +14,7 @@ Se simula las compras mediante el uso de *Stored Procedures* y registrando la tr
 * *tb_items_vendidos*  :  tabla que contiene los datos de los items vendidos, teniendo dos claves foráneas apuntando hacia *tb_vendedor* y *tb_venta*.
 * *tb_venta*  : tabla que contiene los datos de las ventas realizadas, tiene dos claves foráneas apuntando hacia *tb_cliente* y *tb_vendedor*.
 
+
 ![](Diagrama_proyecto_empresa.png)
 
 
